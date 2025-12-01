@@ -115,3 +115,15 @@ def test_pong():
     data = response.json()
     assert "time" in data
     assert isinstance(data["time"], str)
+
+def test_name_endpoint():
+    """Test POST name endpoint that takes a name and returns it"""
+    test_name = "John Doe"
+    response = client.post(
+        "/name",
+        json={"name": test_name}
+    )
+    assert response.status_code == 200
+    data = response.json()
+    assert "name" in data
+    assert data["name"] == test_name
