@@ -8,7 +8,33 @@
 
 ## 🏗️ Architectural Patterns
 
-*(No merged patterns yet - will appear after PRs are merged)*
+*Patterns discovered from story execution:*
+
+### Added a GET /ping health check endpoint to return 'pong' for system availability monitoring
+
+**Technologies Used:** Python, FastAPI  
+**Key Files:**  
+- `app/routers/health.py`
+- `main.py`
+- `test_main.py`
+
+### No health check endpoint was actually implemented in this story
+
+
+### Implemented a user registration endpoint with secure password hashing and basic input validation
+
+**Technologies Used:** Python, FastAPI, Pydantic, SQLAlchemy, JWT  
+**Key Files:**  
+- `app/routers/auth.py`
+- `app/schemas/user.py`
+- `app/utils/security.py`
+- `app/models/user.py`
+
+### Created a comprehensive README.md file documenting the project setup, installation, and usage instructions
+
+**Technologies Used:** Markdown, Documentation  
+**Key Files:**  
+- `README.md`
 
 ---
 
