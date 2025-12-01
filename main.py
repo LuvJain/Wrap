@@ -19,3 +19,12 @@ create_tables()
 @app.get("/")
 async def root():
     return {"message": "Welcome to the User Auth API"}
+
+@app.get("/ping")
+async def ping():
+    """
+    Simple ping endpoint that returns 'pong'.
+
+    Used for basic connectivity testing.
+    """
+    return "pong"
