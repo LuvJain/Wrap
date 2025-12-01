@@ -2,6 +2,10 @@ from fastapi import FastAPI
 from app.routers import auth, health
 from app.core.database import create_tables
 from datetime import datetime
+from pydantic import BaseModel
+
+class NameRequest(BaseModel):
+    name: str
 
 # Create FastAPI application
 app = FastAPI(
@@ -39,3 +43,19 @@ async def pong():
     """
     current_time = datetime.now()
     return {"time": current_time.isoformat()}
+
+@app.post("/name")
+async def process_name(name_request: NameRequest):
+    """
+    POST endpoint that takes a name and returns it.
+
+    Request body format:
+    ```json
+    {
+        "name": "string"
+    }
+    ```
+
+    Returns the provided name in the response.
+    """
+    return {"name": name_request.name}
