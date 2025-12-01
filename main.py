@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from app.routers import auth, health
 from app.core.database import create_tables
+from datetime import datetime
 
 # Create FastAPI application
 app = FastAPI(
@@ -28,3 +29,13 @@ async def ping():
     Used for basic connectivity testing.
     """
     return "pong"
+
+@app.get("/pong")
+async def pong():
+    """
+    Pong endpoint that returns the current time.
+
+    Used for time synchronization and connectivity testing.
+    """
+    current_time = datetime.now()
+    return {"time": current_time.isoformat()}
