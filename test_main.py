@@ -92,3 +92,12 @@ def test_invalid_email():
         },
     )
     assert response.status_code == 422
+
+def test_health_check():
+    """Test health check endpoint"""
+    response = client.get("/health")
+    assert response.status_code == 200
+    data = response.json()
+    assert data["status"] == "up"
+    assert "timestamp" in data
+    assert isinstance(data["timestamp"], int)

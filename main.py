@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from app.routers import auth
+from app.routers import auth, health
 from app.core.database import create_tables
 
 # Create FastAPI application
@@ -11,6 +11,7 @@ app = FastAPI(
 
 # Include routers
 app.include_router(auth.router)
+app.include_router(health.router)
 
 # Create database tables
 create_tables()
