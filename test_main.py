@@ -127,3 +127,18 @@ def test_name_endpoint():
     data = response.json()
     assert "name" in data
     assert data["name"] == test_name
+
+def test_funny_endpoint():
+    """Test GET funny endpoint that returns a joke or funny response"""
+    response = client.get("/funny")
+    assert response.status_code == 200
+    data = response.json()
+    # Test that we got a valid response with either a joke or quote
+    assert "joke" in data or "quote" in data
+
+    if "joke" in data:
+        assert isinstance(data["joke"], str)
+        assert len(data["joke"]) > 0
+    elif "quote" in data:
+        assert isinstance(data["quote"], str)
+        assert len(data["quote"]) > 0
