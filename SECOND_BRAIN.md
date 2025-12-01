@@ -37,12 +37,6 @@
 - `app/utils/security.py`
 - `app/models/user.py`
 
-### Created a comprehensive README.md file documenting the project setup, installation, and usage instructions
-
-**Technologies Used:** Markdown, Documentation  
-**Key Files:**  
-- `README.md`
-
 ---
 
 ## 📚 Key Decisions & Reusable Abstractions
