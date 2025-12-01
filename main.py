@@ -3,6 +3,7 @@ from app.routers import auth, health
 from app.core.database import create_tables
 from datetime import datetime
 from pydantic import BaseModel
+import random
 
 class NameRequest(BaseModel):
     name: str
@@ -68,3 +69,24 @@ async def process_name(name_request: NameRequest):
     Returns the provided name in the response.
     """
     return {"name": name_request.name}
+
+@app.get("/funny")
+async def funny():
+    """
+    Funny endpoint that returns a random joke or humorous response.
+
+    Used to bring a smile to your day and demonstrate endpoint creation.
+    """
+    funny_responses = [
+        {"joke": "Why don't scientists trust atoms? Because they make up everything!"},
+        {"joke": "Why did the developer go broke? Because he used up all his cache!"},
+        {"joke": "Why was the JavaScript developer sad? Because he didn't Node how to Express himself!"},
+        {"joke": "Why do programmers prefer dark mode? Because light attracts bugs!"},
+        {"joke": "What's a programmer's favorite hang out place? The Foo Bar!"},
+        {"joke": "How many programmers does it take to change a light bulb? None, that's a hardware problem!"},
+        {"joke": "What do you call eight hobbits? A hobbyte!"},
+        {"quote": "!false - It's funny because it's true."},
+        {"quote": "There are 10 types of people in this world: those who understand binary and those who don't."}
+    ]
+
+    return random.choice(funny_responses)
