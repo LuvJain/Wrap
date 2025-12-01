@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Response
 from app.routers import auth, health
 from app.core.database import create_tables
 
@@ -19,3 +19,15 @@ create_tables()
 @app.get("/")
 async def root():
     return {"message": "Welcome to the User Auth API"}
+
+@app.get("/ping")
+async def ping():
+    """
+    Simple ping endpoint that returns 'pong'.
+
+    - Returns 200 OK status code
+    - Returns 'pong' as the response (plain text)
+    - Publicly accessible without authentication
+    - Used for basic API reachability checks
+    """
+    return Response(content="pong", media_type="text/plain")
