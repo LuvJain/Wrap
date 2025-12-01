@@ -116,6 +116,14 @@ def test_pong():
     assert "time" in data
     assert isinstance(data["time"], str)
 
+def test_timestamp_endpoint():
+    """Test GET timestamp endpoint that returns current Unix timestamp"""
+    response = client.get("/timestamp")
+    assert response.status_code == 200
+    data = response.json()
+    assert "timestamp" in data
+    assert isinstance(data["timestamp"], int)
+
 def test_name_endpoint():
     """Test POST name endpoint that takes a name and returns it"""
     test_name = "John Doe"

@@ -45,6 +45,15 @@ async def pong():
     current_time = datetime.now()
     return {"time": current_time.isoformat()}
 
+@app.get("/timestamp")
+async def timestamp():
+    """
+    GET endpoint that returns the current Unix timestamp.
+
+    Returns the current Unix timestamp in seconds as an integer.
+    """
+    return {"timestamp": int(datetime.now().timestamp())}
+
 @app.post("/name")
 async def process_name(name_request: NameRequest):
     """
