@@ -101,3 +101,9 @@ def test_health_check():
     assert data["status"] == "up"
     assert "timestamp" in data
     assert isinstance(data["timestamp"], int)
+
+def test_ping():
+    """Test ping endpoint"""
+    response = client.get("/ping")
+    assert response.status_code == 200
+    assert response.text == "pong"  # Plain text response
