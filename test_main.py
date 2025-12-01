@@ -107,3 +107,11 @@ def test_ping():
     response = client.get("/ping")
     assert response.status_code == 200
     assert response.text == '"pong"'  # FastAPI serializes the string to JSON
+
+def test_pong():
+    """Test pong endpoint that returns current time"""
+    response = client.get("/pong")
+    assert response.status_code == 200
+    data = response.json()
+    assert "time" in data
+    assert isinstance(data["time"], str)
